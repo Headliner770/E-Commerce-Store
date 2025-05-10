@@ -6,7 +6,7 @@ import authRoutes from "./routes/auth.route.js";
 import productRoutes from "./routes/product.route.js";
 import cartRoutes from "./routes/cart.route.js";
 import couponRoutes from "./routes/coupon.route.js";
-// import paymentRoutes from "./routes/payment.route.js";
+import paymentRoutes from "./routes/payment.route.js";
 
 import { connectDB } from "./lib/db.js";
 
@@ -15,7 +15,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(express.json()); // allows you to parse...
+app.use(express.json()); // allows you to...
 app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
