@@ -130,7 +130,7 @@ const SignUpPage = () => {
                   id="confirmPassword"
                   type="password"
                   required
-                  value={formData.password}
+                  value={formData.confirmPassword}
                   onChange={(e) =>
                     setFormData({
                       ...formData,
