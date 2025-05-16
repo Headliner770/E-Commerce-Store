@@ -1,11 +1,11 @@
 import express from "express";
 import {
-  getAllProducts,
-  getFeaturedProducts,
   createProduct,
   deleteProduct,
-  getRecommendedProducts,
+  getAllProducts,
+  getFeaturedProducts,
   getProductsByCategory,
+  getRecommendedProducts,
   toggleFeaturedProduct,
 } from "../controllers/product.controller.js";
 import { adminRoute, protectRoute } from "../middleware/auth.middleware.js";

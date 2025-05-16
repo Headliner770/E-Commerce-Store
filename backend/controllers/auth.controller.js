@@ -55,15 +55,13 @@ export const signup = async (req, res) => {
     setCookies(res, accessToken, refreshToken);
 
     res.status(201).json({
-      user: {
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        role: user.role,
-      },
-      message: "User create successfully",
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
     });
   } catch (error) {
+    console.log("Error in signup controller", error.message);
     res.status(500).json({ message: error.message });
   }
 };
@@ -75,7 +73,6 @@ export const login = async (req, res) => {
 
     if (user && (await user.comparePassword(password))) {
       const { accessToken, refreshToken } = generateTokens(user._id);
-
       await storeRefreshToken(user._id, refreshToken);
       setCookies(res, accessToken, refreshToken);
 
@@ -85,10 +82,11 @@ export const login = async (req, res) => {
         email: user.email,
         role: user.role,
       });
+    } else {
+      res.status(401).json({ message: "Invalid email or password" });
     }
   } catch (error) {
     console.log("Error in login controlle", error.message);
-
     res.status(500).json({ message: error.message });
   }
 };
