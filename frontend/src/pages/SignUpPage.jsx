@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { UserPlus, Mail, Lock, User, ArrowRight, Loader } from "lucide-react";
+// import { motion } from "motion/react";
 import { motion } from "framer-motion";
-import { delay } from "framer-motion";
 
 const SignUpPage = () => {
   const loading = false;
