@@ -23,7 +23,8 @@ export const useUserStore = create((set, get) => ({
       toast.error(error.response.data.message || "An error occurred");
     }
   },
-  login: async ({ email, password }) => {
+  // или ({...})
+  login: async (email, password) => {
     set({ loading: true });
 
     try {
