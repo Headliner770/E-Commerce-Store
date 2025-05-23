@@ -14,12 +14,12 @@ const tabs = [
 ];
 
 const AdminPage = () => {
-  //   const [activeTab, setActiveTab] = useState("create");
-  //   const { fetchAllProducts } = useProductStore();
+  const [activeTab, setActiveTab] = useState("create");
+  const { fetchAllProducts } = useProductStore();
 
-  //   useEffect(() => {
-  //     fetchAllProducts();
-  //   }, [fetchAllProducts]);
+  useEffect(() => {
+    fetchAllProducts();
+  }, [fetchAllProducts]);
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -37,7 +37,7 @@ const AdminPage = () => {
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              //   onClick={() => setActiveTab(tab.id)}
+              onClick={() => setActiveTab(tab.id)}
               className={`flex items-center px-4 py-2 mx-2 rounded-md transition-colors duration-200 ${
                 activeTab === tab.id
                   ? "bg-emerald-600 text-white"

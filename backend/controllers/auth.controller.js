@@ -24,17 +24,22 @@ const storeRefreshToken = async (userId, refreshToken) => {
 };
 
 const setCookies = (res, accessToken, refreshToken) => {
+  const isProd = process.env.NODE_ENV === "production";
+
   res.cookie("accessToken", accessToken, {
-    httpOnly: true, // prevent XSS attacks, cross site scripting attack
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict", // prevents CSRF attack, cross-site request forgery attack
-    maxAge: 15 * 60 * 1000, // 15 minutes
+    // httpOnly: true,
+    // secure: false,
+    sameSite: "lax",
+    maxAge: 15 * 60 * 1000,
+    path: "/",
   });
+
   res.cookie("refreshToken", refreshToken, {
-    httpOnly: true, // prevent XSS attacks, cross site scripting attack
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict", // prevents CSRF attack, cross-site request forgery attack
-    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    // httpOnly: true, // временно отключить
+    // secure: false,  // временно отключить
+    sameSite: "lax",
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+    path: "/",
   });
 };
 
@@ -133,11 +138,14 @@ export const refreshToken = async (req, res) => {
       { expiresIn: "15m" }
     );
 
+    const isProd = process.env.NODE_ENV === "production";
+
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      secure: isProd,
+      sameSite: isProd ? "strict" : "lax",
       maxAge: 15 * 60 * 1000,
+      path: "/",
     });
 
     res.json({ message: "Token refreshed successfully" });

@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 
@@ -14,6 +15,12 @@ import { connectDB } from "./lib/db.js";
 dotenv.config();
 
 const app = express();
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "http://localhost:5174"], // разрешаем запросы только с фронтенда
+    credentials: true, // если используете куки или авторизацию
+  })
+);
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json()); // allows you to parse...
@@ -30,4 +37,8 @@ app.listen(PORT, () => {
   console.log("Server is running on http://localhost:" + PORT);
 
   connectDB();
+});
+
+app.use((req, res, next) => {
+  res.status(404).json({ error: "Route not found" });
 });

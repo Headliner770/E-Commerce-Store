@@ -46,6 +46,7 @@ function App() {
               user?.role === "admin" ? <AdminPage /> : <Navigate to="/login" />
             }
           />
+          <Route path="/test" element={<div>Test page — доступна всем</div>} />
         </Routes>
       </div>
       <Toaster />
