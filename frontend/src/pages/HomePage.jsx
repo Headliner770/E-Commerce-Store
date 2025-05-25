@@ -1,4 +1,4 @@
-import CategoryItem from "../components/CategoryItem";
+// import CategoryItem from "../components/CategoryItem";
 
 // const categories = [
 //   { href: "/jeans", name: "Jeans", imageUrl: "/jeans.jpg" },
@@ -10,7 +10,7 @@ import CategoryItem from "../components/CategoryItem";
 //   { href: "/bags", name: "Bags", imageUrl: "/bags.jpg" },
 // ];
 
-const HomePage = () => <div>Welcome! Please log in.</div>;
+// // const HomePage = () => <div>Welcome! Please log in.</div>;
 
 // const HomePage = () => {
 //   return (
@@ -29,12 +29,22 @@ const HomePage = () => <div>Welcome! Please log in.</div>;
 //           ))}
 //         </div>
 
-//         {/* {!isLoading && products.length > 0 && (
+//         {!isLoading && products.length > 0 && (
 //           <FeaturedProducts featuredProducts={products} />
-//         )} */}
+//         )}
 //       </div>
 //     </div>
 //   );
 // };
 
-export default HomePage;
+// export default HomePage;
+
+import React from 'react'
+
+const HomePage = () => {
+  return (
+    <div>HomePage</div>
+  )
+}
+
+export default HomePage

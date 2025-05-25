@@ -15,7 +15,7 @@ const LoginPage = () => {
     console.log(email, password);
     login(email, password);
   };
-
+  console.log("LoginPage rendered");
   return (
     <div className="flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <motion.div
